@@ -1,0 +1,36 @@
+# Environment
+.env
+.env.local
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+dist/
+build/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Datasets (tùy chọn: bỏ comment nếu không muốn commit dữ liệu lớn)
+# datasets/
+
+# Logs
+*.log
+logs/
+
+# Java / Maven (backend)
+target/
+*.class
