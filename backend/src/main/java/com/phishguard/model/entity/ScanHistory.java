@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
@@ -25,15 +26,21 @@ public class ScanHistory extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "source_text", nullable = false, columnDefinition = "TEXT")
-    private String sourceText;
+    @Column(name = "scanned_url", nullable = false, length = 2048)
+    private String scannedUrl;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 32)
     private ScanVerdict verdict;
 
-    @Column(name = "risk_score")
-    private Short riskScore;
+    @Column(name = "risk_score", precision = 5, scale = 2)
+    private BigDecimal riskScore;
+
+    @Column(precision = 5, scale = 4)
+    private BigDecimal confidence;
+
+    @Column(name = "explanations", columnDefinition = "TEXT")
+    private String explanations;
 
     @Column(name = "scanned_at", nullable = false)
     private Instant scannedAt;

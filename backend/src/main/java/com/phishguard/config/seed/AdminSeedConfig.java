@@ -57,10 +57,12 @@ public class AdminSeedConfig {
                 return;
             }
 
-            Role role = roleRepository.findByName(adminRole)
+            String normalizedRole = adminRole.trim().toUpperCase(Locale.ROOT);
+
+            Role role = roleRepository.findByName(normalizedRole)
                     .orElseGet(() -> {
                         Role newRole = new Role();
-                        newRole.setName(adminRole);
+                        newRole.setName(normalizedRole);
                         newRole.setDescription("System role seeded during bootstrap");
                         return roleRepository.save(newRole);
                     });
